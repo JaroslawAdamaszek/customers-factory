@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('company_name');
+            $table->integer('nip');
+            $table->string('address');
+            $table->integer('phone');
             $table->timestamps();
         });
     }
