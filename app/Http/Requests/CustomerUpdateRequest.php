@@ -24,7 +24,13 @@ class CustomerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+                'name'=> 'required|string|max:255',
+                'company_name'=> 'required|string|max:255',
+                'nip'=> 'required|digits:10',
+                'address'=> 'required|string|max:255',
+                'phone'=> 'required|numeric|min:10',
+
         ];
     }
 }
