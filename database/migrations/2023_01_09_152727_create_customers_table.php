@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('company_name');
-            $table->integer('nip');
+            $table->unsignedBigInteger('nip');
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -32,9 +33,20 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\Response
     {
-        //
+        $customer = new Customer();
+
+        $customer->name = $request->name;
+        $customer->company_name = $request->company_name;
+        $customer->nip = $request->nip;
+        $customer->address = $request->address;
+        $customer->phone = $request->phone;
+
+        $customer->save();
+
+        #redirect
+
     }
 
     /**
