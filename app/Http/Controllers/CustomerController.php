@@ -38,9 +38,9 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function store(CustomerStoreRequest $request): \Illuminate\Http\Response
+    public function store(CustomerStoreRequest $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
         $customer = new Customer();
@@ -53,9 +53,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        // dd($customer->toArray());
-
-        #return redirect
+        return view('welcome');
 
     }
 

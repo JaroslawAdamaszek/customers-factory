@@ -22,6 +22,7 @@ Route::prefix('customers')->group(function () {
 
     Route::get('', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
     Route::get('show/{id}', [\App\Http\Controllers\CustomerController::class, 'show'])->name('customers.show');
+    Route::post('/created/', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
     Route::get('edit/{id} ', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
     Route::post('update/{id} ', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
 

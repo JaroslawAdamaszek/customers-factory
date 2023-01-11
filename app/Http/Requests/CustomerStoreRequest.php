@@ -29,7 +29,7 @@ class CustomerStoreRequest extends FormRequest
             'company_name' => 'required|string|max:255',
             'nip' => 'required|digits:10',
             'address' => 'required|string|max:255',
-            'phone' => 'required|numeric|min:10',
+            'phone' => 'required|min:10',
 
         ];
     }
