@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -38,7 +40,7 @@ class CustomerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): \Illuminate\Http\Response
+    public function store(CustomerStoreRequest $request): \Illuminate\Http\Response
     {
 
         $customer = new Customer();
@@ -97,7 +99,7 @@ class CustomerController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomerUpdateRequest $request, $id): \Illuminate\Http\Response
     {
 
         $customer = Customer::find($id);
