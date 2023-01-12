@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerStoreRequest;
 use App\Http\Requests\CustomerUpdateRequest;
 use App\Models\Customer;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -12,26 +13,30 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+
+    public function index(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
-        $customers = Customer::all();
+         $customers = Customer::all();
 
 //        dd($customers)->toArray();
 
-        #return view
+        return view('welcome');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+
+    public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
-        //
+
+        return view('welcome');
+
     }
 
     /**
@@ -40,6 +45,7 @@ class CustomerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+
     public function store(CustomerStoreRequest $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
@@ -61,32 +67,33 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return
      */
-    public function show($id)
+
+    public function show($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
-        $customer = Customer::find($id);
+        $customer = Customer::where('id', $id)->firstOrFail();
 
-//        dd($customer->toArray());
+//         dd($customer->toArray());
 
-        #return view
-
+        return view('welcome');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+
+    public function edit($id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         $customer = Customer::find($id);
 
 //        dd($customer->toArray());
 
-        #return view
+        return view('welcome');
 
     }
 
@@ -95,9 +102,10 @@ class CustomerController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function update(CustomerUpdateRequest $request, $id): \Illuminate\Http\Response
+
+    public function update(CustomerUpdateRequest $request, $id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
         $customer = Customer::find($id);
@@ -110,7 +118,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        #return redirect
+        return view('welcome');
 
     }
 
@@ -118,10 +126,16 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return
      */
-    public function destroy($id)
+
+    public function destroy($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        $customer = Customer::where('id', $id)->firstOrFail();
+
+        $customer->delete();
+
+        return view('welcome');
+
     }
 }
