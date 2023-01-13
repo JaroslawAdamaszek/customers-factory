@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
 use App\Http\Requests\CustomerUpdateRequest;
+use App\Mail\NewCustomer;
 use App\Models\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -56,6 +58,8 @@ class CustomerController extends Controller
         $customer->nip = $request->nip;
         $customer->address = $request->address;
         $customer->phone = $request->phone;
+
+        Mail::to('admin@example’')->send(new \App\Mail\NewCustomer($customer));
 
         $customer->save();
 

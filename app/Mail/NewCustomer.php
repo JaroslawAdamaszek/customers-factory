@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Customer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -13,14 +14,16 @@ class NewCustomer extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Customer $customer)
     {
-        //
+        $this->customer = $customer;
     }
 
     /**
@@ -43,7 +46,8 @@ class NewCustomer extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.new-customer',
+            with: ['customer' => $this->customer],
         );
     }
 
