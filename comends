@@ -1,0 +1,20 @@
+sail composer require laravel/ui
+sail artisan ui bootstrap
+sail npm install vue bootstrap bootstrap-vue
+sail artisan ui vue --auth
+sail npm install vue-router@4
+sail artisan npm init -y
+sail npm install laravel-mix --save-dev
+
+touch webpack.mix.js
+sail npx mix
+
+sail npm install laravel-mix-purgecss --save-dev
+
+sail npm install
+
+"watch": "vite build --watch"
+
+sail npm run watch
+
+sail npm i boostrap-vue
