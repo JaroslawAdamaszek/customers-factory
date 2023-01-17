@@ -12,7 +12,7 @@ class CustomersController extends Controller
     public function index(): \Illuminate\Http\JsonResponse
     {
 
-        $customers = Customer::all();
+        $customers = Customer::select('id','name','company_name', 'address','nip', 'phone')->get();
 
         return response()->json($customers);
 

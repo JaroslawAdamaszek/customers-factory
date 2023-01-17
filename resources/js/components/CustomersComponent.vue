@@ -2,10 +2,28 @@
 
     <h1>{{ title }}</h1>
 
-    <li v-for="customer in customers">
-        {{ customer.name }}
-    </li>
-
+    <table class="table table-striped w-75 m-auto mt-5">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Company</th>
+            <th scope="col">Address</th>
+            <th scope="col">Nip</th>
+            <th scope="col">Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="customer in customers">
+            <th scope="row">{{customer.id}}</th>
+            <td>{{customer.name}}</td>
+            <td>{{customer.company_name}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.nip}}</td>
+            <td>{{customer.phone}}</td>
+        </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
