@@ -18,10 +18,10 @@
                         <router-link class="nav-link" to="/login">Login</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/login">Registry</router-link>
+                        <router-link class="nav-link" to="/register">Register</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/login">Castomers</router-link>
+                        <router-link class="nav-link" to="/customers">Customers</router-link>
                     </li>
                 </ul>
             </div>

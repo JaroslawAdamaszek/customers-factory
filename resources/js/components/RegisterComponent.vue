@@ -6,9 +6,9 @@
 
 <script>
 export default {
-    name: "LoginComponents",
+    name: "RegisterComponent",
     setup: () => ({
-        title: 'Welcome Login Page!'
+        title: 'Welcome Register Page!'
     })
 }
 </script>

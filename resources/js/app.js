@@ -4,19 +4,26 @@ import {createApp} from 'vue';
 
 import * as VueRouter from 'vue-router';
 
-import ExampleComponent from './components/ExampleComponent.vue';
+import RegisterComponent from './components/RegisterComponent.vue';
 
 import LoginComponent from './components/LoginComponent.vue';
 
+import CustomersComponent from "./components/CustomersComponent.vue";
+
 const routes = [
-    {
-        path: '/example',
-        component: ExampleComponent
-    },
     {
         path: '/login',
         component: LoginComponent
+    },
+    {
+        path: '/register',
+        component: RegisterComponent
+    },
+    {
+        path: '/customers',
+        component: CustomersComponent
     }
+
 
 ]
 
