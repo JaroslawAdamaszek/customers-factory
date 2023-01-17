@@ -21,11 +21,9 @@ class CustomerController extends Controller
     public function index(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
-         $customers = Customer::all();
+        $customers = Customer::all();
 
-//        dd($customers)->toArray();
-
-        return view('welcome');
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -37,7 +35,7 @@ class CustomerController extends Controller
     public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
 
-        return view('welcome');
+        return view('customers.created');
 
     }
 
@@ -45,10 +43,10 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function store(CustomerStoreRequest $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function store(CustomerStoreRequest $request): \Illuminate\Http\RedirectResponse
     {
 
         $customer = new Customer();
@@ -63,7 +61,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return view('welcome');
+        return redirect()->route('customers.index')->with('message', 'Customer created successfully');
 
     }
 
@@ -79,9 +77,7 @@ class CustomerController extends Controller
 
         $customer = Customer::where('id', $id)->firstOrFail();
 
-//         dd($customer->toArray());
-
-        return view('welcome');
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -95,9 +91,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
 
-//        dd($customer->toArray());
-
-        return view('welcome');
+        return view('customers.edit', compact('customer'));
 
     }
 
@@ -106,10 +100,10 @@ class CustomerController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function update(CustomerUpdateRequest $request, $id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function update(CustomerUpdateRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
 
         $customer = Customer::find($id);
@@ -122,7 +116,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return view('welcome');
+        return redirect()->route('customers.index')->with('message', 'Customer updated successfully');
 
     }
 
@@ -130,16 +124,16 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return
+     * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function destroy($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $customer = Customer::where('id', $id)->firstOrFail();
 
         $customer->delete();
 
-        return view('welcome');
+        return redirect()->route('customers.index')->with('message','Customer deleted successfully');
 
     }
 }
