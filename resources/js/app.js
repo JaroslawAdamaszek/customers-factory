@@ -1,14 +1,32 @@
 import './bootstrap';
 
-import { createApp } from 'vue';
+import {createApp} from 'vue';
+
+import * as VueRouter from 'vue-router';
 
 import ExampleComponent from './components/ExampleComponent.vue';
 
-createApp(ExampleComponent).mount('#app');
+import LoginComponent from './components/LoginComponent.vue';
 
-import example from './components/ExampleComponent.vue'
+const routes = [
+    {
+        path: '/example',
+        component: ExampleComponent
+    },
+    {
+        path: '/login',
+        component: LoginComponent
+    }
 
-// app.component('example-component', ExampleComponent);
+]
 
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory('/'),
+    routes,
+})
 
-// app.mount('#app');
+const app = createApp({})
+
+app.use(router)
+
+app.mount('#app');
