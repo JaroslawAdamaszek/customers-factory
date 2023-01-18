@@ -19,9 +19,18 @@ class CustomerTest extends TestCase
 
     public function test_customers_index()
     {
-        $response = $this->get('/customers');
 
+        $response = $this->get('/customers');
         $response->assertStatus(200);
+        $response->assertViewIs('customers.index');
+
+    }
+
+    public function test_customer_create()
+    {
+
+        $response = $this->get('/customers/form/');
+        $response->assertRedirect(route('customers.index'));
 
     }
 
@@ -29,18 +38,37 @@ class CustomerTest extends TestCase
     {
 
         $customer = Customer::factory()->create();
-
-        $response = $this->post('/customers/created',[
-
+        $response = $this->post('/customers/created', [
             'name' => $customer->name,
             'company_name' => $customer->company_name,
             'nip' => $customer->nip,
             'address' => $customer->address,
             'phone' => $customer->phone,
-
         ]);
 
+        $response->assertRedirect(route('customers.index'));
+
+    }
+
+    public function test_customer_show()
+    {
+        $customerId = 2;
+
+        $response = $this->get("/customers/show/{$customerId}");
         $response->assertStatus(200);
+        $response->assertViewHas('customer');
+        $response->assertViewIs('customers.show');
+
+    }
+
+    public function test_customer_edit()
+    {
+        $customerId = 2;
+
+        $response = $this->get("/customers/show/{$customerId}");
+        $response->assertStatus(200);
+        $response->assertViewIs('customers.edit');
+        $response->assertViewHas('customer');
 
     }
 
@@ -58,18 +86,7 @@ class CustomerTest extends TestCase
 
         ]);
 
-        $response->assertStatus(200);
-
-    }
-
-    public function test_customer_show()
-    {
-        $customerId = 2;
-
-        $response = $this->get("/customers/show/{$customerId}");
-
-        $response->assertStatus(200);
-
+        $response->assertRedirect(route('customers.index'));
 
     }
 
@@ -78,28 +95,9 @@ class CustomerTest extends TestCase
         $customerId = 3;
 
         $response = $this->delete("/customers/delete/{$customerId}");
-
-        $response->assertStatus(200);
-
+        $response->assertRedirect(route('customers.index'));
 
     }
 
-    public function test_customer_edit()
-    {
-
-        $customerId = 2;
-
-        $response = $this->get("/customers/show/{$customerId}");
-
-        $response->assertStatus(200);
-
-    }
-
-    public function test_customer_create()
-    {
-        $response = $this->get('/customers/form/');
-
-        $response->assertStatus(200);
-    }
 
 }
