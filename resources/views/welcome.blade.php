@@ -15,20 +15,20 @@
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">Customers - Factotry</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/login">Login</router-link>
+                        <router-link :to="{name:'login'}" class="nav-link">Login</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/register">Register</router-link>
+                        <router-link :to="{name:'register'}"class="nav-link" >Register</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/customers">Customers</router-link>
+                        <router-link :to="{name:'customers'}" class="nav-link">Customers</router-link>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-<router-view></router-view>
+    <router-view></router-view>
 </div>
 
 @vite(['resources/js/app.js'])
