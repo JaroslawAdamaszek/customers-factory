@@ -2,7 +2,7 @@
 
     <h1>{{ title }}</h1>
 
-    <table class="table table-striped w-75 m-auto mt-5">
+    <table class="table table-striped w-50 m-auto mt-5">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -11,6 +11,7 @@
             <th scope="col">Address</th>
             <th scope="col">Nip</th>
             <th scope="col">Phone</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
             <td>{{customer.address}}</td>
             <td>{{customer.nip}}</td>
             <td>{{customer.phone}}</td>
+            <td class="px-6 py-4 text-sm leading-5 text-center text-gray-900 whitespace-no-wrap">
+                <button class="btn btn-danger">
+                    Delete</button></td>
         </tr>
         </tbody>
     </table>
@@ -43,7 +47,7 @@ export default {
             this.customers = response.data;
             console.log(response.data)
         })
-    }
+    },
 }
 </script>
 

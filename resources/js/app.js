@@ -1,39 +1,9 @@
 import './bootstrap';
 
-import {createApp} from 'vue';
+import {createApp} from "vue";
 
-import * as VueRouter from 'vue-router';
+import router from "./router";
 
-import RegisterComponent from './components/RegisterComponent.vue';
+const App = createApp({});
 
-import LoginComponent from './components/LoginComponent.vue';
-
-import CustomersComponent from "./components/CustomersComponent.vue";
-
-const routes = [
-    {
-        path: '/login',
-        component: LoginComponent
-    },
-    {
-        path: '/register',
-        component: RegisterComponent
-    },
-    {
-        path: '/customers',
-        component: CustomersComponent
-    }
-
-
-]
-
-const router = VueRouter.createRouter({
-    history: VueRouter.createWebHistory('/api'),
-    routes,
-})
-
-const app = createApp({})
-
-app.use(router)
-
-app.mount('#app');
+createApp(App).use(router).mount('#app');

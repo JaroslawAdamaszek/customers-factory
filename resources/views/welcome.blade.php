@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
-    @vite(['resources/sass/app.scss'])
+    @vite(['resources/sass/app.scss', 'node_modules/bootstrap/dist/css/bootstrap.css'])
 </head>
 <body>
 
@@ -27,7 +27,6 @@
             </div>
         </div>
     </nav>
-
 
 <router-view></router-view>
 </div>
