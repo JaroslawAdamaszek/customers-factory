@@ -16,15 +16,17 @@
         </thead>
         <tbody>
         <tr v-for="customer in customers">
-            <th scope="row">{{customer.id}}</th>
-            <td>{{customer.name}}</td>
-            <td>{{customer.company_name}}</td>
-            <td>{{customer.address}}</td>
-            <td>{{customer.nip}}</td>
-            <td>{{customer.phone}}</td>
+            <th scope="row">{{ customer.id }}</th>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.company_name }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.nip }}</td>
+            <td>{{ customer.phone }}</td>
             <td class="px-6 py-4 text-sm leading-5 text-center text-gray-900 whitespace-no-wrap">
-                <button class="btn btn-danger">
-                    Delete</button></td>
+                <button class="btn btn-danger" type="button" @click="deleteCustomer(customer.id)">
+                    Delete
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -43,11 +45,21 @@ export default {
     },
     created() {
         axios.get('/api/customers/')
-        .then(response => {
-            this.customers = response.data;
-            console.log(response.data)
-        })
+            .then(response => {
+                this.customers = response.data;
+                console.log(response.data)
+            })
     },
+    methods: {
+        deleteCustomer(id) {
+            axios.delete('/api/customers/' + id)
+                .then(response => {
+                    let i = this.customers.map(data => data.id)
+                        .indexOf(id);
+                    this.customers.splice(i, 1);
+                })
+        }
+    }
 }
 </script>
 
