@@ -3,6 +3,7 @@ import {createWebHistory, createRouter} from "vue-router";
 import RegisterComponent from './components/RegisterComponent.vue';
 import LoginComponent from './components/LoginComponent.vue';
 import CustomersComponent from "./components/CustomersComponent.vue";
+import NewCustomerComponent from "./components/NewCustomerComponent.vue";
 
 const routes = [
     {
@@ -19,6 +20,11 @@ const routes = [
         path: '/customers',
         name: 'customers',
         component: CustomersComponent
+    },
+    {
+        path: '/customers/create',
+        name: 'new customer',
+        component: NewCustomerComponent
     },
 ]
 const router = createRouter({

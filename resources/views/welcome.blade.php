@@ -23,6 +23,9 @@
                     <li class="nav-item">
                         <router-link :to="{name:'customers'}" class="nav-link">Customers</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'new customer'}" class="nav-link">New Customers</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
