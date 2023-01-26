@@ -28,9 +28,10 @@ const routes = [
         component: NewCustomerComponent
     },
     {
-        path: '/customers/edit',
+        path: '/customers/:id/edit',
         name: 'edit customer',
-        component: EditCustomerComponent
+        component: EditCustomerComponent,
+        props:true
     },
 ]
 const router = createRouter({
