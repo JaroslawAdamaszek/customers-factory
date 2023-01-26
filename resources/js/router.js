@@ -4,6 +4,7 @@ import RegisterComponent from './components/RegisterComponent.vue';
 import LoginComponent from './components/LoginComponent.vue';
 import CustomersComponent from "./components/CustomersComponent.vue";
 import NewCustomerComponent from "./components/NewCustomerComponent.vue";
+import EditCustomerComponent from "./components/EditCustomerComponent.vue";
 
 const routes = [
     {
@@ -25,6 +26,11 @@ const routes = [
         path: '/customers/create',
         name: 'new customer',
         component: NewCustomerComponent
+    },
+    {
+        path: '/customers/edit',
+        name: 'edit customer',
+        component: EditCustomerComponent
     },
 ]
 const router = createRouter({

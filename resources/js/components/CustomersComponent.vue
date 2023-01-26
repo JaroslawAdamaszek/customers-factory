@@ -23,7 +23,7 @@
             <td>{{ customer.nip }}</td>
             <td>{{ customer.phone }}</td>
             <td class="px-6 py-4 text-sm leading-5 text-center text-gray-900 whitespace-no-wrap">
-                <router-link to="" class="btn btn-primary w-100 mb-2">Edit</router-link>
+                <router-link :to="{name:'edit customer'}" class="btn btn-primary w-100 mb-2">Edit</router-link>
                 <button class="btn btn-danger w-100" type="button" @click="deleteCustomer(customer.id)">
                     Delete
                 </button>
